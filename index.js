@@ -4,6 +4,7 @@ const { Client, Events, GatewayIntentBits, messageLink } = require('discord.js')
 const { token } = require('./configs/config.json');
 const client = new Client({ intents: [3276799] });
 const { pathfinder, Movements, goals} = require('mineflayer-pathfinder')
+const movement = require("mineflayer-movement")
 client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 });
@@ -11,8 +12,14 @@ client.login(token);
 
 const bot = mineflayer.createBot(loginDetails);
 
-
+bot.loadPlugin(movement.plugin);
 bot.loadPlugin(pathfinder);
+
+
+bot.on('error', (err)=>{
+  console.log("error")
+})
+
 
 
 //Command Consts
@@ -26,16 +33,7 @@ bot.once('spawn', () => {
   helpCommand(bot);
   comeToMeCommand(bot, goals);
   mineCommand(bot, goals);
-})
-
-bot.on('chat', (username, message) => {if (username === bot.username) return;
-  if (message === '!treetime') {
-
-    treeHarvestCommand(bot, username, goals)
-
-  } else return;
-  
-
+  bot.chat("test")
 })
 
 
