@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.12.1",
+    "discord.js": "^14.26.0",
     "minecraft-data": "^3.41.0",
     "minecraft-protocol": "^1.41.1",
     "minecraft-protocol-forge": "^1.0.0",
